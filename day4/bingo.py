@@ -4,7 +4,6 @@ from pprint import pp
 
 fname = 'day4/input.txt'
 
-
 @dataclass
 class Cell:
     number: int
@@ -46,11 +45,6 @@ class Board:
         return number in self.number_positions
 
 
-
-
-##########
-# PART 1 #
-##########
 def read_input():
     with open(fname) as f:
         raw_numbers, *raw_boards = f.read().strip().split('\n\n')
@@ -65,6 +59,11 @@ def read_input():
         for raw_board in raw_boards
     ]
     return numbers, boards
+
+
+##########
+# PART 1 #
+##########
 
 
 def part_one():
