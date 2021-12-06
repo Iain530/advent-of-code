@@ -9,7 +9,8 @@ fname = "dayX/input.txt"
 
 
 def part_one():
-    x = read_input(fname)
+    data = read_input(fname)
+    print(data)
 
 
 ##########
