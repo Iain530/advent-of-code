@@ -5,6 +5,8 @@ from itertools import permutations
 
 fname = "day12/input.txt"
 
+START = 'start'
+END = 'end'
 
 @dataclass(init=False)
 class Cave:
@@ -50,24 +52,23 @@ def parse(fname):
 ##########
 
 
-def traverse(maze: Maze, path: List[str], visited: Set[str]) -> Set[Tuple[str]]:
+def traverse(maze: Maze, path: List[str], visited: Set[str]) -> List[List[str]]:
     current_cave_name = path[-1]
-    if current_cave_name == 'end':
-        return frozenset({tuple(path)})
+    if current_cave_name == END:
+        return [path]
 
-    paths_to_end = set()
+    paths_to_end = list()
 
     for cave in maze.outgoing_caves(current_cave_name):
         if cave.name not in visited or cave.big:
-            paths_to_end |= traverse(maze, path + [cave.name], visited | {cave.name})
+            paths_to_end += traverse(maze, path + [cave.name], visited | {cave.name})
 
-    return frozenset(paths_to_end)
+    return paths_to_end
 
 
 def part_one():
     maze = parse(fname)
-    start_path = ['start']
-    paths_to_end = traverse(maze, start_path, set(start_path))
+    paths_to_end = traverse(maze, [START], {START})
     return len(paths_to_end)
 
 
@@ -76,27 +77,26 @@ def part_one():
 ##########
 
 
-def traverse_p2(maze: Maze, path: List[str], visited: Set[str], used_double_small: bool) -> Set[Tuple[str]]:
+def traverse_part_2(maze: Maze, path: List[str], visited: Set[str], visited_small_twice: bool) -> List[List[str]]:
     current_cave_name = path[-1]
-    if current_cave_name == 'end':
-        return frozenset({tuple(path)})
+    if current_cave_name == END:
+        return [path]
 
-    paths_to_end = set()
+    paths_to_end = list()
 
     for cave in maze.outgoing_caves(current_cave_name):
         if cave.name not in visited or cave.big:
-            paths_to_end |= traverse_p2(maze, path + [cave.name], visited | {cave.name}, used_double_small)
-        elif not used_double_small and cave.name != 'start':
-            paths_to_end |= traverse_p2(maze, path + [cave.name], visited | {cave.name}, True)
+            paths_to_end += traverse_part_2(maze, path + [cave.name], visited | {cave.name}, visited_small_twice)
+        elif not visited_small_twice and cave.name != START:
+            paths_to_end += traverse_part_2(maze, path + [cave.name], visited | {cave.name}, True)
 
-    return frozenset(paths_to_end)
+    return paths_to_end
 
 
 
 def part_two():
     maze = parse(fname)
-    start_path = ['start']
-    paths_to_end = traverse_p2(maze, start_path, set(start_path), False)
+    paths_to_end = traverse_part_2(maze, [START], {START}, False)
     return len(paths_to_end)
 
 
