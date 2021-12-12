@@ -1,9 +1,7 @@
 from utils import read_input
 from dataclasses import dataclass
-from typing import List, Optional, Set, Dict, Tuple
+from typing import List, Set, Dict, Tuple
 from itertools import permutations
-from cachetools import cached
-from cachetools.keys import hashkey
 
 fname = "day12/input.txt"
 
@@ -52,7 +50,6 @@ def parse(fname):
 ##########
 
 
-@cached({}, key=lambda m, p, v: hashkey(tuple(p), frozenset(v)))
 def traverse(maze: Maze, path: List[str], visited: Set[str]) -> Set[Tuple[str]]:
     current_cave_name = path[-1]
     if current_cave_name == 'end':
@@ -79,7 +76,6 @@ def part_one():
 ##########
 
 
-@cached({}, key=lambda m, p, v, db_sm: hashkey(tuple(p), frozenset(v), db_sm))
 def traverse_p2(maze: Maze, path: List[str], visited: Set[str], used_double_small: bool) -> Set[Tuple[str]]:
     current_cave_name = path[-1]
     if current_cave_name == 'end':
