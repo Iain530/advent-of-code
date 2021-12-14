@@ -2,8 +2,7 @@ from utils import read_input
 from day1.sonar2 import sliding_window
 from itertools import chain
 from collections import Counter
-from cachetools import cached
-from cachetools.keys import hashkey
+from functools import cache
 
 
 fname = "day14/input.txt"
@@ -42,19 +41,22 @@ def part_one():
 ##########
 
 
-@cached({}, key=lambda t, r, d, td: hashkey(t, d, td))
-def traverse(template, rules, depth, target_depth):
-    if depth == target_depth:
-        return Counter(template[1:]) # Ignore first char as it overlaps previous chunk
-    
-    counts = Counter()
-    for pair in pairs(template):
-        new = rules[pair]
-        counts.update(traverse(pair[0] + new + pair[1], rules, depth + 1, target_depth))
-    
-    return counts
-    
+def make_traverse(rules, target_depth):
 
+    @cache
+    def traverse(template, depth=0):
+        if depth == target_depth:
+            return Counter(template[1:]) # Ignore first char as it overlaps previous chunk
+        
+        counts = Counter()
+        for pair in pairs(template):
+            new = rules[pair]
+            counts.update(traverse(pair[0] + new + pair[1], depth + 1))
+        
+        return counts
+    
+    return traverse
+    
 
 def pairs(template):
     return (pair for pair in sliding_window(template, 2))
@@ -63,7 +65,8 @@ def pairs(template):
 def part_two():
     template, rules = parse(fname)
     
-    counts = traverse(template, rules, 0, 40)
+    traverse = make_traverse(rules, target_depth=40)
+    counts = traverse(template)
     counts[template[0]] += 1 # Make up for missing first char of chunk 1
 
     most_common, *_, least_common = counts.most_common()
