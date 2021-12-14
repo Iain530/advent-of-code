@@ -1,4 +1,4 @@
-from utils import read_input
+from utils import read_input, timed
 from day1.sonar2 import sliding_window
 from itertools import chain
 from collections import Counter
@@ -74,7 +74,10 @@ def part_two():
 
 
 if __name__ == '__main__':
-    print("Part 1")
-    print(part_one())
-    print("Part 2")
-    print(part_two())
+    print("PART 1")
+    result, time = timed(part_one)
+    print(f"Answer:\t{result}\nTime:\t{time*1000}ms")
+    print()
+    print(f"PART 2")
+    result, time = timed(part_two)
+    print(f"Answer:\t{result}\nTime:\t{time*1000}ms")

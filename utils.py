@@ -1,4 +1,5 @@
 from typing import List, Type, Generator
+from timeit import default_timer as timer
 
 
 def read_input(fname: str, types: List[Type] = None) -> Generator:
@@ -14,3 +15,10 @@ def read_input(fname: str, types: List[Type] = None) -> Generator:
         else:
             for line in lines:
                 yield types[0](line[0])
+
+
+def timed(f, *args, **kwargs):
+    t1 = timer()
+    result = f(*args, **kwargs)
+    t2 = timer()
+    return result, t2 - t1
