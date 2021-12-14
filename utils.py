@@ -4,9 +4,9 @@ from typing import List, Type, Generator
 def read_input(fname: str, types: List[Type] = None) -> Generator:
     with open(fname) as f:
         lines = (line.strip().split() for line in f.readlines())
-    
+
     if types is None:
-        return lines
+        yield from lines
     else:
         if len(types) > 1:
             for line in lines:
