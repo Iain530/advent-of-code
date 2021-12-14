@@ -1,4 +1,5 @@
 import numpy as np
+from utils import run
 
 
 fname = "day13/input.txt"
@@ -88,7 +89,4 @@ def part_two():
 
 
 if __name__ == '__main__':
-    print("Part 1")
-    print(part_one())
-    print("Part 2")
-    part_two()
+    run(part_one, part_two)

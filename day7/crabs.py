@@ -1,4 +1,4 @@
-from math import ceil, floor
+from utils import run
 
 def read_input(fname):
     with open(fname) as f:
@@ -45,7 +45,4 @@ def part_two():
 
 
 if __name__ == '__main__':
-    print("Part 1")
-    print(part_one())
-    print("Part 2")
-    print(part_two())
+    run(part_one, part_two)

@@ -22,3 +22,13 @@ def timed(f, *args, **kwargs):
     result = f(*args, **kwargs)
     t2 = timer()
     return result, t2 - t1
+
+
+def run(part_one, part_two):
+    print("PART 1")
+    result, time = timed(part_one)
+    print(f"Answer:\t{result}\nTime:\t{time*1000}ms")
+    print()
+    print(f"PART 2")
+    result, time = timed(part_two)
+    print(f"Answer:\t{result}\nTime:\t{time*1000}ms")
