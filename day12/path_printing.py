@@ -1,4 +1,4 @@
-from utils import read_input
+from utils import read_input, run
 from dataclasses import dataclass
 from typing import List, Set, Dict, Tuple
 from itertools import permutations
