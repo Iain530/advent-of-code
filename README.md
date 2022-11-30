@@ -1,9 +1,6 @@
-# Advent of Code 2021
+# Advent of Code
 
-My solutions to [Advent of Code 2021](https://adventofcode.com/2021/).
+My solutions to [Advent of Code](https://adventofcode.com/).
 
-Run code from the root directory as a module e.g.:
-
-```bash
-python -m day1.sonar1
-```
+- [2021](./2021/)
+- [2022](./2022/)
