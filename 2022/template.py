@@ -1,7 +1,7 @@
 from utils import read_input, run
 
 
-fname = "DAY/input.txt"
+FNAME = "DAY/input.txt"
 
 
 ##########
@@ -9,7 +9,7 @@ fname = "DAY/input.txt"
 ##########
 
 
-def part_one():
+def part_one(input_file):
     data = read_input(fname)
     print(data)
 
@@ -19,9 +19,9 @@ def part_one():
 ##########
 
 
-def part_two():
+def part_two(input_file):
     pass
 
 
 if __name__ == '__main__':
-    run(part_one, part_two)
+    run(part_one, part_two, FNAME)

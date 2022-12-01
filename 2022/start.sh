@@ -10,7 +10,7 @@ then
     cp template.py $FILENAME.py
     sed -i '' -e 's|DAY|'"$NUMBER"'|g' $FILENAME.py
 
-    curl 'https://adventofcode.com/2022/day/1/input' -H 'Cookie: session='$SESSION_COOKIE > $NUMBER/input.txt
+    curl 'https://adventofcode.com/2022/day/'$NUMBER'/input' -H 'Cookie: session='$SESSION_COOKIE > $NUMBER/input.txt
 else
     echo "Directory $NUMBER already exists"
 fi

@@ -12,8 +12,8 @@ def parse_chunk(chunk):
 ##########
 
 
-def part_one():
-    data = read_input(fname, separator='\n\n', parse_chunk=parse_chunk)
+def part_one(input_file):
+    data = read_input(input_file, separator='\n\n', parse_chunk=parse_chunk)
     return sum(max(data, key=sum))
 
 
@@ -22,11 +22,11 @@ def part_one():
 ##########
 
 
-def part_two():
-    data = read_input(fname, separator='\n\n', parse_chunk=parse_chunk)
+def part_two(input_file):
+    data = read_input(input_file, separator='\n\n', parse_chunk=parse_chunk)
     top_three = sorted(data, key=sum)[-3:]
     return sum(map(sum, top_three))
 
 
 if __name__ == '__main__':
-    run(part_one, part_two)
+    run(part_one, part_two, fname)
