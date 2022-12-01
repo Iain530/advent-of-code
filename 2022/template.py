@@ -1,7 +1,7 @@
 from utils import read_input, run
 
 
-fname = "input/00_template.txt"
+fname = "DAY/input.txt"
 
 
 ##########

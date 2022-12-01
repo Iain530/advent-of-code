@@ -1,7 +1,7 @@
 from utils import read_input, run
 
 
-fname = "input/01_calorie_counting.txt"
+fname = "01/input.txt"
 
 
 def parse_chunk(chunk):

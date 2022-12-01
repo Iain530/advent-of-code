@@ -1,4 +1,16 @@
-NAME="$1"
+NUMBER=$(printf "%02d" $1)
+NAME="$2"
+FILENAME="${NUMBER}/$NAME"
+SESSION_COOKIE=$(cat .sessioncookie)
 
-cp 00_template.py $NAME.py
-cp input/00_template.txt input/$NAME.txt
+if [ ! -d $NUMBER ]
+then
+    mkdir $NUMBER
+
+    cp template.py $FILENAME.py
+    sed -i '' -e 's|DAY|'"$NUMBER"'|g' $FILENAME.py
+
+    curl 'https://adventofcode.com/2022/day/1/input' -H 'Cookie: session='$SESSION_COOKIE > $NUMBER/input.txt
+else
+    echo "Directory $NUMBER already exists"
+fi
