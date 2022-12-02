@@ -10,7 +10,7 @@ FNAME = "DAY/input.txt"
 
 
 def part_one(input_file):
-    data = read_input(fname)
+    data = read_input(input_file)
     print(data)
 
 

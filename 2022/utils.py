@@ -11,7 +11,7 @@ def default_parse_line(line: str) -> list[str]:
 
 def read_input(fname: str, separator: str = '\n', parse_chunk: Callable[[str], T] = default_parse_line) -> list[T]:
     with open(fname) as f:
-        return [parse_chunk(line) for line in f.read().split(separator)]
+        return [parse_chunk(line) for line in f.read().strip().split(separator)]
 
 
 def timed(f, *args, **kwargs):
