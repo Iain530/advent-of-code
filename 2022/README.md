@@ -1,6 +1,7 @@
 # Advent of Code 2022
 
-- [Day 1](./01/calorie_counting.py)
+- [Day 1 - Calorie Counting](./01/calorie_counting.py)
+- [Day 2 - Rock Paper Scissors](./02/rock_paper_scissors.py)
 
 ```bash
 # Run solutions as a module from this directory
