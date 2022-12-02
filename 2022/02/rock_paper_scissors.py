@@ -70,14 +70,15 @@ def choose_response(elf, strategy):
     return CHOICES[(elf_i + SHIFT[strategy]) % 3]
 
 
-def score_game(elf, strategy):
+def score_game(game):
+    elf, strategy = game
     me = choose_response(elf, strategy)
     return BASE_SCORES[me] + OUTCOME_SCORES[strategy]
 
 
 def part_two(input_file):
     data = read_input(input_file, parse_chunk=parse_line)
-    return sum(score_game(me, elf) for me, elf in data)
+    return sum(score_game(game) for game in data)
     
 
 
