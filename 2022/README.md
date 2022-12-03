@@ -2,6 +2,7 @@
 
 - [Day 1 - Calorie Counting](./01/calorie_counting.py)
 - [Day 2 - Rock Paper Scissors](./02/rock_paper_scissors.py)
+- [Day 3 - Rucksack Reorganization](./03/rucksack.py)
 
 ```bash
 # Run solutions as a module from this directory
