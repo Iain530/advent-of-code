@@ -4,6 +4,7 @@
 - [Day 2 - Rock Paper Scissors](./02/rock_paper_scissors.py)
 - [Day 3 - Rucksack Reorganization](./03/rucksack.py)
 - [Day 4 - Camp Cleanup](./04/camp_cleanup.py)
+- [Day 5 - Supply Snacks](./05/supply_snacks.py)
 
 ```bash
 # Run solutions as a module from this directory
