@@ -5,6 +5,7 @@
 - [Day 3 - Rucksack Reorganization](./03/rucksack.py)
 - [Day 4 - Camp Cleanup](./04/camp_cleanup.py)
 - [Day 5 - Supply Snacks](./05/supply_snacks.py)
+- [Day 6 - Tuning Trouble](./06/tuning_trouble.py)
 
 ```bash
 # Run solutions as a module from this directory
