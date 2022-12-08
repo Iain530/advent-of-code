@@ -7,6 +7,7 @@
 - [Day 5 - Supply Snacks](./05/supply_snacks.py)
 - [Day 6 - Tuning Trouble](./06/tuning_trouble.py)
 - [Day 7 - No Space Left On Device](./07/no_space.py)
+- [Day 8 - Treetop Tree House](./08/treetop_tree_house.py)
 
 ```bash
 # Run solutions as a module from this directory
