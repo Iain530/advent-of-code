@@ -1,4 +1,5 @@
 from timeit import default_timer as timer
+from itertools import tee
 from typing import Callable, TypeVar, Any
 
 
@@ -19,6 +20,14 @@ def timed(f, *args, **kwargs):
     result = f(*args, **kwargs)
     t2 = timer()
     return result, t2 - t1
+
+
+def sliding_window(iterable, size):
+    iterables = tee(iterable, size)
+    for i, iterator in enumerate(iterables):
+        for _ in range(i):
+            next(iterator)
+    return zip(*iterables)
 
 
 def run(part_one, part_two, input_file):

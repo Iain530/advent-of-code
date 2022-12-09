@@ -8,6 +8,7 @@
 - [Day 6 - Tuning Trouble](./06/tuning_trouble.py)
 - [Day 7 - No Space Left On Device](./07/no_space.py)
 - [Day 8 - Treetop Tree House](./08/treetop_tree_house.py)
+- [Day 9 - Rope Bridge](./09/rope_bridge.py)
 
 ```bash
 # Run solutions as a module from this directory
