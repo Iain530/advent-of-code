@@ -9,6 +9,7 @@
 - [Day 7 - No Space Left On Device](./07/no_space.py)
 - [Day 8 - Treetop Tree House](./08/treetop_tree_house.py)
 - [Day 9 - Rope Bridge](./09/rope_bridge.py)
+- [Day 10 - Cathode-Ray Tube](./10/cathode_ray_tube.py)
 
 ```bash
 # Run solutions as a module from this directory
