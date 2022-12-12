@@ -11,6 +11,7 @@
 - [Day 9 - Rope Bridge](./09/rope_bridge.py)
 - [Day 10 - Cathode-Ray Tube](./10/cathode_ray_tube.py)
 - [Day 11 - Monkey in the Middle](./11/monkey_in_the_middle.py)
+- [Day 12 - Hill Climbing Algorithm](./12/hill_climbing_algorithm.py)
 
 ```bash
 # Run solutions as a module from this directory
