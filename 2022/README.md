@@ -13,6 +13,8 @@
 - [Day 11 - Monkey in the Middle](./11/monkey_in_the_middle.py)
 - [Day 12 - Hill Climbing Algorithm](./12/hill_climbing_algorithm.py)
 - [Day 13 - Distress Signal](./13/distress_signal.py)
+- [Day 14 - Regolith Reservoir](./14/regolith_reservoir.py)
+- [Day 15 - Beacon Exclusion Zone](./15/beacon_exclusion_zone.py)
 
 ```bash
 # Run solutions as a module from this directory
