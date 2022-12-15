@@ -2,3 +2,4 @@ __pycache__
 .sessioncookie
 
 venv
+.DS_Store
