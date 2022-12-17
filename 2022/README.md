@@ -15,6 +15,7 @@
 - [Day 13 - Distress Signal](./13/distress_signal.py)
 - [Day 14 - Regolith Reservoir](./14/regolith_reservoir.py)
 - [Day 15 - Beacon Exclusion Zone](./15/beacon_exclusion_zone.py)
+- [Day 16 - Proboscidea Volcanium](./16/proboscidea_volcanium.py)
 
 ```bash
 # Run solutions as a module from this directory
