@@ -1,7 +1,6 @@
 import numpy as np
-from utils import read_input, run
-import matplotlib.pyplot as plt
-from matplotlib import animation
+from utils import read_input, run, sliding_window
+from collections import defaultdict
 
 
 FNAME = "17/input.txt"
@@ -117,6 +116,30 @@ def part_one(input_file):
 ##########
 
 
+
+def detect_pattern(records, signature, max_heights):
+    if len(records[signature]) < 4:
+        return False
+    
+    rocks_diff = None
+    height_diff = None
+
+    for a, b in sliding_window(records[signature], 2):
+        if height_diff is None and rocks_diff is None:
+            rocks_diff = b[0] - a[0]
+            height_diff = b[1] - a[1]
+        elif b[0] - a[0] != rocks_diff or b[1] - a[1] != height_diff:
+            return 0
+
+    goal_rocks = 1_000_000_000_000
+    return (goal_rocks // rocks_diff) * height_diff + max_heights[goal_rocks % rocks_diff]
+
+
+def create_key(shape_i, heights):
+    min_height = min(heights)
+    return shape_i % 5, tuple(h - min_height for h in heights)
+
+
 def part_two(input_file):
     data = read_input(input_file, parse_chunk=lambda l: [DIRECTIONS[a] for a in l])[0]
     grid = np.zeros((7, 10000000))
@@ -125,16 +148,16 @@ def part_two(input_file):
 
     gen_shapes = all_shapes(4)
     shape = next(gen_shapes)
-    directions = iter(data * 2)
+    directions = iter(data * 4)
 
-    moves = 0
+    records = defaultdict(list)
+    max_heights = [0]
 
     for i in range(1000000000000):
         if not shape:
             shape = gen_shapes.send(max(heights) + 4)
         while shape:
             direction = next(directions)
-            moves += 1
 
             shape = move(grid, shape, direction)
             shape, moved = drop(grid, shape)
@@ -143,22 +166,14 @@ def part_two(input_file):
                 for x, y in shape:
                     grid[(x, y)] = (i % 5) + 1
                     heights[x] = max(heights[x], y)
+                
                 shape = None
-            
-            if moves % len(data) == 0:
-                directions = iter(data)
-                if shape is None:
-                    print('Maybe')
+                signature = create_key(i, heights)
+                records[signature].append((i, max(heights)))
+                max_heights.append(max(heights))
 
-                if shape is None and i % 5 == 0:
-                    print(heights)
-                    print(grid[:, max(heights)-5:max(heights)+2])
-                    print(moves)
-                    print(i)
-                    return
-
-    
-    return max(heights)
+                if answer := detect_pattern(records, signature, max_heights):
+                    return answer
 
 
 if __name__ == '__main__':
