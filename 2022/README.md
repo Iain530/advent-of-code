@@ -18,6 +18,8 @@
 - [Day 16 - Proboscidea Volcanium](./16/proboscidea_volcanium.py)
 - [Day 17 - Pyroclastic Flow](./17/pyroclastic_flow.py)
 - [Day 18 - Boiling Boulders](./18/boiling_boulders.py)
+- [Day 19 - Not Enough Minerals](./19/not_enough_minerals.py)
+- [Day 20 - Grove Positioning System](./20/grove_positioning_system.py)
 
 ```bash
 # Run solutions as a module from this directory

@@ -43,8 +43,8 @@ def run(part_one, part_two, input_file):
 def run_test(part, test_input_file, expected, test_name: str = "", exit_on_fail: bool = True):
     result, time = timed(part, test_input_file)
     if result == expected:
-        print(f"Passed - {test_name} in {time*1000}ms")
+        print(f"Passed: {test_name} in {time*1000}ms")
     else:
-        print(f"Failed - {test_name or test_input_file}\nExpected {expected}, got {result} in {time*1000}ms")
+        print(f"Failed: {test_name or test_input_file}\nExpected {expected}, got {result} in {time*1000}ms")
         if exit_on_fail:
             exit(1)
