@@ -20,6 +20,7 @@
 - [Day 18 - Boiling Boulders](./18/boiling_boulders.py)
 - [Day 19 - Not Enough Minerals](./19/not_enough_minerals.py)
 - [Day 20 - Grove Positioning System](./20/grove_positioning_system.py)
+- [Day 21 - Monkey Math](./21/monkey_math.py)
 
 ```bash
 # Run solutions as a module from this directory
