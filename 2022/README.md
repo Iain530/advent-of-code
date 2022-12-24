@@ -21,6 +21,8 @@
 - [Day 19 - Not Enough Minerals](./19/not_enough_minerals.py)
 - [Day 20 - Grove Positioning System](./20/grove_positioning_system.py)
 - [Day 21 - Monkey Math](./21/monkey_math.py)
+- [Day 22 - Monkey Map](./22/monkey_map.py)
+- [Day 23 - Unstable Diffusion](./23/unstable_diffusion.py)
 
 ```bash
 # Run solutions as a module from this directory
