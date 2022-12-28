@@ -23,6 +23,8 @@
 - [Day 21 - Monkey Math](./21/monkey_math.py)
 - [Day 22 - Monkey Map](./22/monkey_map.py)
 - [Day 23 - Unstable Diffusion](./23/unstable_diffusion.py)
+- [Day 24 - Blizzard Basin](./24/blizzard_basin.py)
+- [Day 25 - Full of Hot Air](./25/full_of_hot_air.py)
 
 ```bash
 # Run solutions as a module from this directory
