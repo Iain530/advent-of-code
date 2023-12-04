@@ -31,14 +31,6 @@ def part_one(input_file):
 ##########
 
 
-def score_with_copies(card_id, winning_set, numbers, all_cards):
-    matches = sum(1 for n in numbers if n in winning_set)
-    if matches == 0:
-        return 0
-    return matches + sum(score_with_copies(card_id, *all_cards[card_id + i + 1], all_cards) for i in range(matches))
-    
-
-
 def part_two(input_file):
     data = read_input(input_file, parse_chunk=parse_chunk)
 
