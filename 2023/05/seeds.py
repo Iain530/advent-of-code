@@ -76,48 +76,22 @@ def split(line: Line, pivot: int) -> list[Line]:
     return [line]
 
 
-def sort(lines: list[Line]) -> list[Line]:
-    return sorted(lines, key=lambda l: l[0])
-
-
 def is_overlapping(l1: Line, l2: Line) -> bool:
     l1_start, l1_length = l1
     l2_start, l2_length = l2
     return l1_start <= l2_start < l1_start + l1_length or l2_start <= l1_start < l2_start + l2_length
 
 
-def pivot_in_line(line: Line, pivot: int) -> bool:
+def is_pivot_in_line(line: Line, pivot: int) -> bool:
     return line[0] < pivot < line[0] + line[1]
-
-
-def merge(l1: Line, l2: Line) -> Line:
-    l1_start, l1_length = l1
-    l2_start, l2_length = l2
-    start = min(l1_start, l2_start)
-    length = max(l1_start + l1_length, l2_start + l2_length) - start
-    return start, length
-
-
-def get_pivots(transforms: list[Transform]) -> list[int]:
-    return sorted(set(flatten(
-        [start, start + length]
-        for _, (start, length) in transforms
-    )))
 
 
 def split_on_pivots(line: Line, pivots: list[int]) -> list[Line]:
     for pivot in pivots:
-        if pivot_in_line(line, pivot):
+        if is_pivot_in_line(line, pivot):
             l1, l2 = split(line, pivot)
             return [l1] + split_on_pivots(l2, pivots)
     return [line]
-
-
-def split_all_lines(lines: list[Line], transforms: list[Transform]) -> list[Line]:
-    pivots = get_pivots(transforms)
-    return sort(flatten(
-        split_on_pivots(line, pivots) for line in lines
-    ))
 
 
 def apply_transforms(line: Line, transforms: list[Transform]) -> Line:
@@ -128,7 +102,11 @@ def apply_transforms(line: Line, transforms: list[Transform]) -> Line:
 
 
 def process_map(lines: list[Line], transforms: list[Transform]) -> list[Line]:
-    split_lines = split_all_lines(lines, transforms)
+    pivots = sorted(set(flatten(
+        [start, start + length]
+        for _, (start, length) in transforms
+    )))
+    split_lines = flatten(split_on_pivots(line, pivots) for line in lines)
     return [apply_transforms(line, transforms) for line in split_lines]
 
 
