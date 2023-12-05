@@ -9,7 +9,7 @@ with open('.sessioncookie', 'r') as f:
 
 
 member_id = "1194494"
-url = "https://adventofcode.com/2023/leaderboard/private/view/212116.json"
+url = "https://adventofcode.com/2023/leaderboard/private/view/3418645.json"
 headers = {"Cookie": "session=" + session_token}
 
 data = None
