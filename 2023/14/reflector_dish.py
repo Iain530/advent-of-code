@@ -50,7 +50,6 @@ def part_one(input_file):
         for j in range(grid.shape[1])
         if grid[i,j] == 'O'
     )
-    print(grid)
     return res
 
 
@@ -59,25 +58,52 @@ def part_one(input_file):
 ##########
 
 
+def reversible(rng, reverse: bool):
+    if reverse:
+        return reversed(rng)
+    return rng
+
+
 def cycle(grid):
-    return sum(
-        move((i, j), NORTH, grid)
-        for i in range(grid.shape[0])
-        for j in range(grid.shape[1])
-        if grid[i,j] == 'O'
-    )
+    load = 0
+    for direction in directions():
+        load = sum(
+            move((i, j), direction, grid)
+            for i in reversible(range(grid.shape[0]), direction[0] == 1)
+            for j in reversible(range(grid.shape[1]), direction[1] == 1)
+            if grid[i,j] == 'O'
+        )
+    return load
+
+
+def detect_pattern(seen, current):
+    for i, old in enumerate(seen):
+        if np.all(old == current):
+            return i
+    return None
+
+
+def directions():
+    yield NORTH
+    yield WEST
+    yield SOUTH
+    yield EAST
 
 
 def part_two(input_file):
     grid = np.array(read_input(input_file, parse_chunk=list))
-    load = 0
-    print(np.rot90(grid))
-    for i in range(1_000_000_000):
-        if i % 1_000 == 0:
-            print(f'{i * 100 / 1_000_000_000}% load: {load}')
-        load = cycle(grid)
-        grid = np.rot90(grid, axes=(1, 0))
-    return load
+    seen = []
+    loads = []
+    goal = 1_000_000_000 - 1
+
+    for i in range(goal):
+        loads.append(cycle(grid))
+
+        if pattern_start := detect_pattern(seen, grid):
+            pattern_length = i - pattern_start
+            return loads[pattern_start + ((goal - pattern_start) % pattern_length)]
+    
+        seen.append(np.copy(grid))
 
 
 if __name__ == '__main__':
