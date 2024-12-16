@@ -4,6 +4,7 @@ from typing import Callable, TypeVar, Any
 
 
 T = TypeVar('T')
+Vector = tuple[int, int]
 
 
 def default_parse_line(line: str) -> list[str]:
@@ -48,3 +49,7 @@ def run_test(part, test_input_file, expected, test_name: str = "", exit_on_fail:
         print(f"Failed: {test_name or test_input_file}\nExpected {expected}, got {result} in {time*1000}ms")
         if exit_on_fail:
             exit(1)
+
+
+def add(v1: Vector, v2: Vector) -> Vector:
+    return tuple(a + b for a, b in zip(v1, v2))
