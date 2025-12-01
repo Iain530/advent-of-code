@@ -6,6 +6,13 @@ from typing import Callable, TypeVar, Any
 T = TypeVar('T')
 Vector = tuple[int, int]
 
+UP = (-1, 0)
+RIGHT = (0, 1)
+DOWN = (1, 0)
+LEFT = (0, -1)
+
+DIRECTIONS = [UP, RIGHT, DOWN, LEFT]
+
 
 def default_parse_line(line: str) -> list[str]:
     return line.strip().split()
@@ -49,6 +56,13 @@ def run_test(part, test_input_file, expected, test_name: str = "", exit_on_fail:
         print(f"Failed: {test_name or test_input_file}\nExpected {expected}, got {result} in {time*1000}ms")
         if exit_on_fail:
             exit(1)
+
+
+def iter_grid(grid):
+    for i in range(grid.shape[0]):
+        for j in range(grid.shape[1]):
+            yield (i, j)
+
 
 
 def add(v1: Vector, v2: Vector) -> Vector:
