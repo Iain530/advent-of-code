@@ -64,6 +64,10 @@ def iter_grid(grid):
             yield (i, j)
 
 
+def is_in_grid(coord, grid):
+    return all(0 <= c < axis for c, axis in zip(coord, grid.shape))
+
+
 
 def add(v1: Vector, v2: Vector) -> Vector:
     return tuple(a + b for a, b in zip(v1, v2))
